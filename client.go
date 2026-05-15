@@ -1,4 +1,4 @@
-package main
+package boomi
 
 type Client struct {
 	baseUrl   string
