@@ -1,5 +1,5 @@
 module github.com/benjamin-eich/go-boomi
 
-go 1.25
+go 1.25.0
 
-require github.com/hooklift/gowsdl v0.5.0 // indirect
+require golang.org/x/time v0.15.0
