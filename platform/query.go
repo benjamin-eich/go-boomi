@@ -64,21 +64,21 @@ type QueryResponse struct {
 	NumberOfResults int `json:"numberOfResults"`
 }
 
-type FolderQueryResult struct {
+type QueryFolderResponse struct {
 	Type            string    `json:"@type"`
 	QueryToken      string    `json:"queryToken"`
 	Result          []*Folder `json:"result"`
 	NumberOfResults int       `json:"numberOfResults"`
 }
 
-type ComponentMetadataQueryResult struct {
+type QueryComponentMetadataResponse struct {
 	Type            string               `json:"@type"`
 	QueryToken      string               `json:"queryToken"`
 	Result          []*ComponentMetadata `json:"result"`
 	NumberOfResults int                  `json:"numberOfResults"`
 }
 
-type DeployedPackageQueryResult struct {
+type QueryDeployedPackageResponse struct {
 	Type            string             `json:"@type"`
 	QueryToken      string             `json:"queryToken"`
 	Result          []*DeployedPackage `json:"result"`
