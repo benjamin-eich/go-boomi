@@ -32,14 +32,22 @@ func NewClient(context context.Context, baseUrl, username, password string) *Cli
 }
 
 func (c *Client) Get(path string) ([]byte, error) {
-	return c.Send("GET", path, nil, false)
+	return c.Send("GET", path, nil, false, "application/json")
 }
 
 func (c *Client) Post(path string, payload any) ([]byte, error) {
-	return c.Send("POST", path, payload, false)
+	return c.Send("POST", path, payload, false, "application/json")
 }
 
-func (c *Client) Send(method string, path string, payload any, raw bool) ([]byte, error) {
+func (c *Client) GetXml(path string) ([]byte, error) {
+	return c.Send("GET", path, nil, false, "application/xml")
+}
+
+func (c *Client) PostXml(path string, payload any) ([]byte, error) {
+	return c.Send("POST", path, payload, false, "application/xml")
+}
+
+func (c *Client) Send(method string, path string, payload any, raw bool, responseType string) ([]byte, error) {
 	err := c.rateLimiter.Wait(c.context) // This is a blocking call. Honors the rate limit
 	if err != nil {
 		return nil, err
@@ -78,7 +86,7 @@ func (c *Client) Send(method string, path string, payload any, raw bool) ([]byte
 		req.SetBasicAuth(c.username, c.password)
 	}
 
-	req.Header.Set("Accept", "application/json")
+	req.Header.Set("Accept", responseType)
 
 	client := &http.Client{}
 	resp, err := client.Do(req)

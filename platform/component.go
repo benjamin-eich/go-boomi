@@ -48,11 +48,11 @@ type CertificateComponent struct {
 
 	Description string `xml:"description"`
 
-	Object CertificateObject `xml:"object"`
+	Object *CertificateObject `xml:"object"`
 }
 
 type CertificateObject struct {
-	Certificate Certificate `xml:"CertificateModel"`
+	Certificate *Certificate `xml:"CertificateModel"`
 }
 
 type Certificate struct {
@@ -62,11 +62,11 @@ type Certificate struct {
 	SignatureAlgorithm string `xml:"signatureAlgorithm,attr"`
 	Version            string `xml:"version,attr"`
 
-	Type            string              `xml:"Type"`
-	IssuedTo        CertificateIdentity `xml:"IssuedTo"`
-	Issuer          CertificateIdentity `xml:"Issuer"`
-	Validity        Validity            `xml:"Validity"`
-	CertificateData string              `xml:"CertificateData"`
+	Type            string               `xml:"Type"`
+	IssuedTo        *CertificateIdentity `xml:"IssuedTo"`
+	Issuer          *CertificateIdentity `xml:"Issuer"`
+	Validity        *Validity            `xml:"Validity"`
+	CertificateData string               `xml:"CertificateData"`
 }
 
 type CertificateIdentity struct {

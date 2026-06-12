@@ -42,13 +42,12 @@ type ModelField struct {
 	Repeatable bool     `xml:"repeatable,attr"`
 	Required   bool     `xml:"required,attr"`
 	Type       string   `xml:"type,attr"`
-	Masked     string   `xml:"masked,attr"`
 
-	UniqueID  string `xml:"uniqueId,attr,omitempty"`
-	MaxLength int    `xml:"maxLength,attr,omitempty"`
-
-	FirstMaskCharsCount int `xml:"firstMaskCharsCount,attr,omitempty"`
-	LastMaskCharsCount  int `xml:"lastMaskCharsCount,attr,omitempty"`
+	Masked              string `xml:"masked,attr,omitempty"`
+	UniqueID            string `xml:"uniqueId,attr,omitempty"`
+	MaxLength           int    `xml:"maxLength,attr,omitempty"`
+	FirstMaskCharsCount int    `xml:"firstMaskCharsCount,attr,omitempty"`
+	LastMaskCharsCount  int    `xml:"lastMaskCharsCount,attr,omitempty"`
 
 	// Future-proofing: capture unknown attributes
 	Attrs []xml.Attr `xml:",any,attr"`
@@ -59,8 +58,8 @@ type ModelField struct {
 
 type ModelSources struct {
 	XMLName        xml.Name            `xml:"sources"`
-	Sources        []ModelSource       `xml:"source"`
-	SourceRankings ModelSourceRankings `xml:"sourceRankings"`
+	Sources        []ModelSource       `xml:"source,omitempty"`
+	SourceRankings ModelSourceRankings `xml:"sourceRankings,omitempty"`
 }
 
 type ModelSource struct {
@@ -128,7 +127,7 @@ type ModelDataQualityStep struct {
 
 type ModelRecordTitle struct {
 	XMLName         xml.Name                   `xml:"recordTitle"`
-	TitleParameters ModelRecordTitleParameters `xml:"titleParameters"`
+	TitleParameters ModelRecordTitleParameters `xml:"titleParameters,omitempty"`
 }
 
 type ModelRecordTitleParameters struct {
@@ -144,7 +143,7 @@ type ModelRecordTitleParameter struct {
 
 type ModelMatchRules struct {
 	XMLName xml.Name         `xml:"matchRules"`
-	Rules   []ModelMatchRule `xml:"matchRule"`
+	Rules   []ModelMatchRule `xml:"matchRule,omitempty"`
 }
 
 type ModelMatchRule struct {
